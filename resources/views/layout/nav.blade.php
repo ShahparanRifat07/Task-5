@@ -1,14 +1,24 @@
 <div class="ui secondary pointing menu">
-    <a class="active item">
+    <a href="{{route('home')}}" class="active item">
         Home
     </a>
 
     <div class="right menu">
-        <a class="item">
-            Name
+        @auth
+        <a class="ui item" href="">
+          {{auth()->user()->name}}
         </a>
-        <a class="ui item">
-            Logout
+        <form class="ui item" action="{{route('logout')}}" method="POST">
+          @csrf
+          <button class="mini ui button red basic">Logout</button>
+        </form>
+        @else
+        <a href="{{route('register')}}" class="ui item">
+          Register
         </a>
+        <a href="{{route('login')}}" class="ui item">
+          Login
+        </a>
+        @endauth
     </div>
 </div>

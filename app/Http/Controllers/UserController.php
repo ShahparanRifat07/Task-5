@@ -46,17 +46,17 @@ class UserController extends Controller
                 $request->session()->regenerate();
                 return redirect('/');
             }else{
-                return redirect('login');
+                return redirect('auth.login');
             }
         }
         if($request->isMethod('GET')){
-            return view('login');
+            return view('auth.login');
         }
     }
 
 
     public function logout(){
         auth()->logout();
-        return redirect('/');
+        return redirect('login');
     }
 }
